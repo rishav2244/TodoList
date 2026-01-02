@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: TrackerBackend
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/taskdb
+    username: taskuser
+    password: taskpw
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true #Apparently it helps with debugging.

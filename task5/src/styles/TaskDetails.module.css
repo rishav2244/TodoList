@@ -1,0 +1,15 @@
+.OverallDetails{
+    display: flex;
+    flex-direction: column;
+}
+
+.EachAttribute{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.TaskStatus{
+    flex-grow: 1;
+}
