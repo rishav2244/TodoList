@@ -1,0 +1,30 @@
+/* DashboardLayout.css */
+.dashboard {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 200px;
+  background: #222;
+  color: white;
+  padding: 1rem;
+}
+
+.sidebar a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  margin-bottom: 1rem;
+}
+
+.active-link {
+  background: #4caf50;
+  padding: 0.3rem;
+  border-radius: 4px;
+}
+
+.content {
+  flex: 1;
+  padding: 1rem;
+}

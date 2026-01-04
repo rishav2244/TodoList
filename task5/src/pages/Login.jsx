@@ -25,7 +25,7 @@ export const Login = () => {
             setErrMsg("");
         }
         login();
-        navigate("/tasks")
+        navigate("/dashboard/tasks")
     }
 
     return (

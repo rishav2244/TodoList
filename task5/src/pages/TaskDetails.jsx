@@ -60,7 +60,7 @@ export const TaskDetails = () => {
             const resp = await deleteStatus(id)
             setIsDeleted(true);
             setTimeout(() => {
-                navigate(`/tasks`);
+                navigate(`/dashboard/tasks`);
             }, 3000);
         }
         catch(err)
@@ -124,7 +124,7 @@ export const TaskDetails = () => {
             </button>
             <button
                 onClick={() => {
-                    navigate(`/tasks`)
+                    navigate(`/dashboard/tasks`)
                 }}>Return to dashboard</button>
         </div>
     )

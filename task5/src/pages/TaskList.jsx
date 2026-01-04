@@ -37,12 +37,12 @@ export const TaskList = () => {
                 TaskObj={reqInfo}
                 key={reqInfo.id}
                 onclick={() => {
-                  navigate(`/tasks/${reqInfo.id}`)
+                  navigate(`${reqInfo.id}`)
                 }} />
             ))
       }
       <button
-        onClick={() => navigate(`/tasks/add-task`)}>
+        onClick={() => navigate(`add-task`)}>
         Create task
       </button>
       {allCompleted ? <p>🎉 All tasks completed!</p> : <></>}

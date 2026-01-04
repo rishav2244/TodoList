@@ -61,7 +61,7 @@ export const TaskAdd = () => {
                     disabled={!buttonEnbl}>Submit</button>
             </form>
             <button
-            onClick={ () => navigate("/tasks")}>
+            onClick={ () => navigate("/dashboard/tasks")}>
                 Returnt to dashboard
             </button>
         </div>

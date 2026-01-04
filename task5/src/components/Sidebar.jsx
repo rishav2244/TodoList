@@ -18,11 +18,11 @@ export const Sidebar = () => {
             className="OverallBar">
             <div
             onClick={toTasks}>
-                <h6>Tasks</h6>
+                <h4>Tasks</h4>
             </div>
             <div
             onClick={toProfile}>
-                <h6>Profile</h6>
+                <h4>Profile</h4>
             </div>
         </div>
     )
