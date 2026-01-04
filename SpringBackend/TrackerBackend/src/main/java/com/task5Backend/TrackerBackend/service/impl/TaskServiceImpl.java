@@ -42,14 +42,14 @@ public class TaskServiceImpl implements TaskService
     }
 
     @Override
-    public List<TaskLightDisplayDTO> getAllTasksLight()
+    public List<TaskHeavyDisplayDTO> getAllTasksHeavy()
     {
-        List<TaskLightDisplayDTO> taskLightDisplayDTOList = taskRepository.
+        List<TaskHeavyDisplayDTO> taskHeavyDisplayDTOList = taskRepository.
                 findAll().
                 stream().
-                map(taskMapper::toLightDisplayDTO).
+                map(taskMapper::toHeavyDisplayDTO).
                 toList();
-        return taskLightDisplayDTOList;
+        return taskHeavyDisplayDTOList;
     }
 
     @Override
