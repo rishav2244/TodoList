@@ -1,16 +1,20 @@
 import { NavLink, Outlet } from "react-router-dom";
+import { useContext } from "react";
+import { ThemeContext } from "../context/ThemeContext";
 import "./DashboardLayout.css";
 
 export const DashboardLayout = () => {
-  return (
-    <div className="dashboard">
+  const { currTheme } = useContext(ThemeContext);
 
-      <div className="sidebar">
+  return (
+    <div className={`dashboard ${currTheme}`}> {/* optional if you want the theme on the whole layout */}
+
+      <div className={`sidebar ${currTheme}`}>
         <h2>Dashboard</h2>
 
         <NavLink
-          to="tasks" //Btw this causes routing
-          className={({ isActive }) => isActive ? "active-link" : ""} //This is mainly for CSS purposes via classname assignment.
+          to="tasks"
+          className={({ isActive }) => isActive ? "active-link" : ""}
         >
           Tasks
         </NavLink>
@@ -30,7 +34,7 @@ export const DashboardLayout = () => {
         </NavLink>
       </div>
 
-      <div className="content">
+      <div className={`content ${currTheme}`}>
         <Outlet />
       </div>
     </div>

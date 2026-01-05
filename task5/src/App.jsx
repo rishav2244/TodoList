@@ -15,32 +15,44 @@ import { UserProfile } from "./pages/UserProfile";
 import { DashboardLogs } from "./pages/DashboardLogs";
 
 import { AuthContextProvider } from "./context/AuthContextProvider";
+import { ThemeContextProvider } from "./context/ThemeContextProvider";
+import { ThemeContext } from "./context/ThemeContext";
+
+import { useContext } from "react";
+
+const ThemedAppShell = ({ children }) => {
+  const { currTheme } = useContext(ThemeContext);
+  return <div className={`app-root ${currTheme}`}>{children}</div>;
+};
 
 function App() {
   return (
     <AuthContextProvider>
-      <Router>
-        <Header />
+      <ThemeContextProvider>
+        <ThemedAppShell>
+          <Router>
+            <Header />
 
-        <Routes>
-          <Route path="/login" element={<Login />} />
+            <Routes>
+              <Route path="/login" element={<Login />} />
 
-          <Route element={<ProtectedRoute />}>
+              <Route element={<ProtectedRoute />}>
+                <Route path="/" element={<Navigate to="/dashboard/tasks" replace />} />
 
-            <Route path="/" element={<Navigate to="/dashboard/tasks" replace />} />
+                <Route path="/dashboard" element={<DashboardLayout />}>
+                  <Route path="tasks" element={<DashboardTasks />} />
+                  <Route path="tasks/add-task" element={<TaskAdd />} />
+                  <Route path="tasks/:id" element={<TaskDetails />} />
+                  <Route path="profile" element={<UserProfile />} />
+                  <Route path="logs" element={<DashboardLogs />} />
+                </Route>
+              </Route>
+            </Routes>
 
-            <Route path="/dashboard" element={<DashboardLayout />}>
-              <Route path="tasks" element={<DashboardTasks />} />
-              <Route path="tasks/add-task" element={<TaskAdd />} />
-              <Route path="tasks/:id" element={<TaskDetails />} />
-              <Route path="profile" element={<UserProfile />} />
-              <Route path="logs" element={<DashboardLogs />} />
-            </Route>
-          </Route>
-        </Routes>
-
-        <Footer />
-      </Router>
+            <Footer />
+          </Router>
+        </ThemedAppShell>
+      </ThemeContextProvider>
     </AuthContextProvider>
   );
 }

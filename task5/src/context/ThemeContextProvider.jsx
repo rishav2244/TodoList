@@ -1,10 +1,17 @@
 import { ThemeContext } from "./ThemeContext";
-import { useContext, useState } from "react";
+import { useState } from "react";
 
 export const ThemeContextProvider = ({children}) => {
     const [currTheme, setCurrTheme] = useState("light");
     
     const toggleTheme = () => {
-        setCurrTheme( temp === "light" ? "dark" : "light");
+        setCurrTheme( temp => temp === "light" ? "dark" : "light");
     };
+
+    return(
+        <ThemeContext.Provider
+        value={{currTheme,toggleTheme}}>
+            {children}
+        </ThemeContext.Provider>
+    )
 }

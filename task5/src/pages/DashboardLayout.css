@@ -1,29 +1,50 @@
-/* DashboardLayout.css */
+/* Dashboard layout base */
 .dashboard {
   display: flex;
   min-height: 100vh;
 }
 
+/* Sidebar base layout */
 .sidebar {
   width: 200px;
-  background: #222;
-  color: white;
   padding: 1rem;
 }
 
+/* Theme overrides */
+.sidebar.light {
+  background-color: #f0f0f0; /* light background */
+  color: #000;               /* dark text */
+}
+
+.sidebar.dark {
+  background-color: #222;    /* dark background */
+  color: #fff;               /* light text */
+}
+
+/* Links */
 .sidebar a {
   display: block;
-  color: white;
   text-decoration: none;
   margin-bottom: 1rem;
 }
 
+/* Theme-aware link colors */
+.sidebar.light a {
+  color: #000;
+}
+
+.sidebar.dark a {
+  color: #fff;
+}
+
+/* Active link (same for both themes, adjust if needed) */
 .active-link {
   background: #4caf50;
   padding: 0.3rem;
   border-radius: 4px;
 }
 
+/* Content area */
 .content {
   flex: 1;
   padding: 1rem;

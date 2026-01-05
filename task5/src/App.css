@@ -1,4 +1,4 @@
-#root {
+/* #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -39,4 +39,105 @@
 
 .read-the-docs {
   color: #888;
+} */
+
+/* App root base */
+.app-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Light theme background */
+.app-root.light {
+  background-color: #f5f5f5;
+  color: #000000;
+}
+
+/* Dark theme background */
+.app-root.dark {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+#root {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.app-header {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Light theme */
+.app-header.light {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Dark theme */
+.app-header.dark {
+  background-color: #282c34;
+  color: #ffffff;
+}
+
+
+/* Login form base */
+.login-form {
+  max-width: 300px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  border-radius: 6px;
+  text-align: center;
+}
+
+/* Light theme */
+.login-form.light {
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid #ddd;
+}
+
+/* Dark theme */
+.login-form.dark {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  border: 1px solid #333;
+}
+
+/* Inputs */
+.login-form input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Error message */
+.login-error {
+  color: red;
+  margin-bottom: 1rem;
+}
+
+/* Footer base */
+.app-footer {
+  padding: 1rem;
+  text-align: center;
+  margin-top: auto;
+}
+
+/* Light theme footer */
+.app-footer.light {
+  background-color: #ffffff;
+  color: #000000;
+  border-top: 1px solid #ddd;
+}
+
+/* Dark theme footer */
+.app-footer.dark {
+  background-color: #282c34;
+  color: #ffffff;
+  border-top: 1px solid #333;
 }
