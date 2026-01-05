@@ -5,12 +5,12 @@ export const DashboardLayout = () => {
   return (
     <div className="dashboard">
 
-      <aside className="sidebar">
+      <div className="sidebar">
         <h2>Dashboard</h2>
 
         <NavLink
-          to="tasks"
-          className={({ isActive }) => isActive ? "active-link" : ""}
+          to="tasks" //Btw this causes routing
+          className={({ isActive }) => isActive ? "active-link" : ""} //This is mainly for CSS purposes via classname assignment.
         >
           Tasks
         </NavLink>
@@ -21,12 +21,18 @@ export const DashboardLayout = () => {
         >
           Profile
         </NavLink>
-      </aside>
 
-      {/* Main content */}
-      <main className="content">
+        <NavLink
+          to="logs"
+          className={({ isActive }) => isActive ? "active-link" : ""}
+        >
+          Logs
+        </NavLink>
+      </div>
+
+      <div className="content">
         <Outlet />
-      </main>
+      </div>
     </div>
   );
 };

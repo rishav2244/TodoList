@@ -21,7 +21,7 @@ export const TaskList = () => {
   }, []);
 
   const filteredTasks = myInfo
-    ? myInfo.filter((task) => task.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+    ? myInfo.filter((task) => task.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       task.description.toLowerCase().includes(searchQuery.toLowerCase()))
     : [];
 
@@ -54,7 +54,7 @@ export const TaskList = () => {
             />
           ))
       )}
-      
+
       <button onClick={() => navigate(`add-task`)}>Create task</button>
 
       {allCompleted ? <p>🎉 All tasks completed!</p> : <></>}

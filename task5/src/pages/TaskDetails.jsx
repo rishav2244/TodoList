@@ -13,6 +13,8 @@ export const TaskDetails = () => {
     const [confirmDelete, setConfirmDelete] = useState(false);
     const [isDeleted, setIsDeleted] = useState(false);
 
+    let formattedDate = "";
+
     useEffect(() => {
         const datCall = async () => {
             try {
@@ -35,12 +37,11 @@ export const TaskDetails = () => {
         const statusJSON = {
             status: "COMPLETED"
         }
-        try{
-            const resp = await updateStatus(id,statusJSON)
+        try {
+            const resp = await updateStatus(id, statusJSON)
             setTaskStatus(resp.status);
         }
-        catch(err)
-        {
+        catch (err) {
             console.log(`Error: ${err}`)
         }
     }
@@ -48,35 +49,41 @@ export const TaskDetails = () => {
     const toConfirm = () => {
         setConfirmDelete(true);
         setTimeout(() => {
-            if(!isDeleted)
-            {
+            if (!isDeleted) {
                 setConfirmDelete(false);
             }
         }, 3000);
     }
 
     const deleteTask = async () => {
-        try{
+        try {
             const resp = await deleteStatus(id)
             setIsDeleted(true);
             setTimeout(() => {
                 navigate(`/dashboard/tasks`);
             }, 3000);
         }
-        catch(err)
-        {
+        catch (err) {
             console.log(`Error: ${err}`)
         }
     }
 
-    // const date = new Date(TaskObj.createdAt);
-    // const formattedDate = `${date.getDate().toString().padStart(2, "0")}/${(date.getMonth() + 1).toString().padStart(2, "0")
-    //     }/${date.getFullYear()}`;
+    if (TaskObj) {
+        formattedDate = new Date(TaskObj.createdAt).toLocaleString("en-IN", {
+            timeZone: "Asia/Kolkata",
+            day: "2-digit",
+            month: "2-digit",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+            hour12: true
+        });
+    }
 
     if (isLoading) return <p>Loading task details...</p>;
     if (!TaskObj) return <p>Task not found.</p>;
-    if (isDeleted)
-    {
+    if (isDeleted) {
         return (
             <p>
                 Task deleted successfully 🚀
@@ -94,7 +101,7 @@ export const TaskDetails = () => {
                 {TaskObj.description}
             </h3>
             <h3>
-                Created at: {TaskObj.createdAt}
+                Created at: {formattedDate}
             </h3>
             <div
                 className={styles.EachAttribute}>
@@ -105,7 +112,7 @@ export const TaskDetails = () => {
                     }}>
                     {TaskStatus}
                 </h3>
-                {TaskStatus === "PENDING" &&(
+                {TaskStatus === "PENDING" && (
                     <button
                         type="button"
                         onClick={markAsCompleted}>
@@ -114,10 +121,10 @@ export const TaskDetails = () => {
                 )}
             </div>
             <button
-            type="button"
-            onClick={
-                !confirmDelete ? toConfirm : deleteTask
-            }>
+                type="button"
+                onClick={
+                    !confirmDelete ? toConfirm : deleteTask
+                }>
                 {
                     confirmDelete ? "Confirm delete" : "Delete task"
                 }
