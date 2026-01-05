@@ -51,3 +51,13 @@ export const deleteStatus = async (id) => {
     throw new Error(`Errpr: ${err.message}`)
   }
 }
+
+export const getLogs = async () => {
+  try {
+    const resp = await axios.get(`${API_URL}/logs`);
+    return resp.data;
+  }
+  catch (err) {
+    throw new Error(`Error: ${err.message}`);
+  }
+}

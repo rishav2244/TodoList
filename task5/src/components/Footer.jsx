@@ -1,6 +1,11 @@
+import { useContext } from "react";
+import { ThemeContext } from "../context/ThemeContext";
+
 export const Footer = () => {
+  const { currTheme } = useContext(ThemeContext);
+
   return (
-    <footer style={{ backgroundColor: "#282c34", padding: "1rem", color: "white", marginTop: "auto" }}>
+    <footer className={`app-footer ${currTheme}`}>
       <p>&copy; 2025 Task Tracker. All rights reserved.</p>
     </footer>
   );

@@ -14,9 +14,9 @@ public class TaskController
 {
     private final TaskService taskService;
     @GetMapping("/tasks")
-    public List<TaskLightDisplayDTO>  getTasks()
+    public List<TaskHeavyDisplayDTO>  getTasks()
     {
-        return taskService.getAllTasksLight();
+        return taskService.getAllTasksHeavy();
     }
 
     @PostMapping("/tasks")
